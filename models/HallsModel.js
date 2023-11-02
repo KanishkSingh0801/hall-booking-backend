@@ -3,35 +3,36 @@ import mongoose from 'mongoose'
 const hallsSchema = new mongoose.Schema({
     "Faculty_ID": {
         "type": "String",
-        "required":true
+        "required": true
     },
     "Hall_ID": {
         "type": "String",
-        "required":true
+        "required": true,
+        "unique": true
     },
     "Hall_Name": {
         "type": "String",
-        "required":true
+        "required": true
     },
     "Department": {
         "type": "String",
-        "required":true
+        "required": true
     },
     "Description": {
         "type": "String",
     },
     "Capacity": {
         "type": "Number",
-        "required":false
+        "required": false
     },
     "Image1": {
         "type": "String",
-        "required":false
+        "required": false
     },
     "Image2": {
         "type": "String",
-        "required":false
+        "required": false
     }
 })
 
-export default mongoose.model("halls",hallsSchema)
+export default mongoose.model("halls", hallsSchema)
