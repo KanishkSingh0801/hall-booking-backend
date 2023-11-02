@@ -6,22 +6,23 @@ const router = express.Router();
 //CREATE
 router.post('/', createBooking)
 
-
-
 //DELETE
 router.delete('/:id', deleteBooking)
 
 //AVAILABLE SLOTS FOR PARTICULAR HALL
-router.get('/availableslots',getAvailableTimes)
+router.get('/availableslots', getAvailableTimes)
 
 //GET
 router.get('/:id', getBooking)
 
 //GET ALL
 router.get('/allBookings', getAllBookings)
-//Get user Bookings
+
+//GET Admin Bookings
 router.get('/adminBookings', getAdminBookings)
-router.get('/userBookings',getUserBookings)
+
+//GET User Bookings
+router.get('/userBookings', getUserBookings)
 
 
 

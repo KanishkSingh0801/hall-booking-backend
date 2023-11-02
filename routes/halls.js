@@ -1,16 +1,15 @@
 import express from "express";
-import { createHall, getAllHalls } from "../controllers/halls.js";
+import { createHall, getAllHalls, getHall } from "../controllers/halls.js";
 
 const router = express.Router();
 
 //CREATE
 router.post('/', createHall)
 
+//GET Hall
+router.get('/', getHall)
+
 //GET ALL
 router.get('/', getAllHalls)
-
-// router.get("/", (req,res)=> {
-//     res.send("This is halls endpoint")
-// })
 
 export default router

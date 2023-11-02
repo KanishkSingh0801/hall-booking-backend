@@ -1,22 +1,22 @@
-const jwt= require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const User = require('../Models/User');
 const asyncHandler = require('express-async-handler');
 // const { toHaveErrorMessage } = require('@testing-library/jest-dom/matchers');
-const protect=asyncHandler(async (req,res,next)=>{
+const protect = asyncHandler(async (req, res, next) => {
     let token;
-    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
-        try{
+    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+        try {
             token = req.headers.authorization.split(" ")[1];
             // decodes token id
-            const decoded= jwt.verify(token,process.env.JWT_SECRET);
-            req.user=await User.findById(decoded.id).select("-password");
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            req.user = await User.findById(decoded.id).select("-password");
             next();
-        }catch(error){
+        } catch (error) {
             res.status(401);
             throw new Error("Not authorized, token failed");
         }
     }
-    if(!token){
+    if (!token) {
         res.status(401);
         throw new Error("Not authorized , token failed.");
     }
