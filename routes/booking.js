@@ -4,7 +4,7 @@ import { createBooking, deleteBooking, getAdminBookings, getAllBookings, getAvai
 const router = express.Router();
 
 //CREATE
-router.post('/', createBooking)
+router.post('/createBooking', createBooking)
 
 //DELETE
 router.delete('/:id', deleteBooking)
@@ -12,8 +12,8 @@ router.delete('/:id', deleteBooking)
 //AVAILABLE SLOTS FOR PARTICULAR HALL
 router.get('/availableslots', getAvailableTimes)
 
-//GET
-router.get('/:id', getBooking)
+//GET User Bookings
+router.get('/userBookings', getUserBookings)
 
 //GET ALL
 router.get('/allBookings', getAllBookings)
@@ -21,8 +21,8 @@ router.get('/allBookings', getAllBookings)
 //GET Admin Bookings
 router.get('/adminBookings', getAdminBookings)
 
-//GET User Bookings
-router.get('/userBookings', getUserBookings)
+//GET
+router.get('/:id', getBooking)
 
 
 

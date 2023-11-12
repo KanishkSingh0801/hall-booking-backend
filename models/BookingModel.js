@@ -1,15 +1,11 @@
 import mongoose from 'mongoose'
 
 const bookingSchema = new mongoose.Schema({
-    "Booking_ID": {
-        "type": "String",
-        "required":true
-    },
     "Faculty_ID": {
         "type": "String",
         "required":true
     },
-    "Hall_ID": {
+    "Hall_Name": {
         "type": "String",
         "required":true
     },
@@ -45,7 +41,13 @@ const bookingSchema = new mongoose.Schema({
     "Reason": {
         "type": "String",
         "required":true
+    },
+    "Remark": {
+        "type": "String",
+        "required":false
     }
-})
+}, { timestamps: true }
+
+)
 
 export default mongoose.model("booking",bookingSchema)

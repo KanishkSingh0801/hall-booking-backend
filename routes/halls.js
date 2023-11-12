@@ -10,6 +10,6 @@ router.post('/', createHall)
 router.get('/', getHall)
 
 //GET ALL
-router.get('/', getAllHalls)
+router.get('/getAllHalls', getAllHalls)
 
 export default router
