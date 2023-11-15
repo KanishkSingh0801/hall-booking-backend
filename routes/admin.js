@@ -1,9 +1,9 @@
 import express from "express";
+import { authAdmin, registerAdmin } from "../controllers/admin.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.send("This is admin endpoint")
-})
+router.post("/register", registerAdmin);
+router.post("/login", authAdmin);
 
-export default router
+export default router;

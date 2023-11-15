@@ -1,52 +1,35 @@
 import express from "express";
-import { createBooking, deleteBooking, getAdminBookings, getAllBookings, getAvailableTimes, getBooking, getUserBookings } from "../controllers/booking.js";
-
+import {
+  createBooking,
+  deleteBooking,
+  getAdminBookings,
+  getAllBookings,
+  getAvailableTimes,
+  getBooking,
+  getUserBookings,
+  updateBooking,
+} from "../controllers/booking.js";
+import { protectUserRoutes } from "../middleware/authmiddleware.js";
+import { protectAdminRoutes } from "../middleware/adminVerify.js";
 const router = express.Router();
 
-//CREATE
-router.post('/createBooking', createBooking)
-
-//DELETE
-router.delete('/:id', deleteBooking)
-
+//Genral routes
 //AVAILABLE SLOTS FOR PARTICULAR HALL
-router.get('/availableslots', getAvailableTimes)
+router.get("/availableslots", getAvailableTimes);
 
+//User Routes
 //GET User Bookings
-router.get('/userBookings', getUserBookings)
+router.get("/userBookings", protectUserRoutes, getUserBookings);
 
 //GET ALL
-router.get('/allBookings', getAllBookings)
+router.get("/allBookings", getAllBookings);
 
-//GET Admin Bookings
-router.get('/adminBookings', getAdminBookings)
+// Admin Routes
+router.post("/createBooking", protectUserRoutes, createBooking);
+router.get("/adminBookings", protectAdminRoutes, getAdminBookings);
+router.delete("/deleteBooking", protectAdminRoutes, deleteBooking);
+router.patch("/updateBooking", protectAdminRoutes, updateBooking);
 
-//GET
-router.get('/:id', getBooking)
+router.get("/:id", getBooking);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import express from "express";
-
-// const router = express.Router();
-
-// router.get("/", (req,res)=> {
-//     res.send("This is booking endpoint");
-// })
-
-export default router
+export default router;
