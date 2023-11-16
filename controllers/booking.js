@@ -9,10 +9,11 @@ export const createBooking = async (req, res) => {
 
   req.body.Faculty_ID = data.Faculty_ID;
   const bookingId = await autoInc();
-  const newBooking = new booking(req.body);
+  const newBooking = req.body;
   newBooking["Booking_ID"] = bookingId;
+  console.log(newBooking);
   try {
-    const savedBooking = await newBooking.save();
+    const savedBooking = await booking.create(newBooking);
     res.status(200).json(savedBooking);
   } catch (err) {
     res.status(400).json({
@@ -51,9 +52,11 @@ export const getBooking = async (req, res) => {
 //GET Users BOOKINGS
 export const getUserBookings = async (req, res) => {
   try {
-    const studentid = req.query.studentid;
+    const user = req.user;
     // const bookingdate = new Date(req.query.date)
-    const userBookings = await booking.find({ Student_ID: studentid }); // , Date: {$gt : bookingdate}
+    const userBookings = await booking.find({
+      Student_ID: user.Student_ID,
+    }); // , Date: {$gt : bookingdate}
     res.status(200).json(userBookings);
   } catch (err) {
     res.status(400).json({
