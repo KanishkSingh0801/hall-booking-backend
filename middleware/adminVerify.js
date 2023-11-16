@@ -22,7 +22,8 @@ export const protectAdminRoutes = async (req, res, next) => {
     }
   }
   if (!token) {
-    res.status(401);
-    throw new Error("Not authorized , token failed.");
+    res.status(401).json({
+      msg: "Not authorized , token failed.",
+    });
   }
 };
