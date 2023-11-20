@@ -105,7 +105,9 @@ export const updateBooking = async (req, res) => {
 
 export const getAllBookings = async (req, res) => {
   try {
-    const halls = await booking.find();
+    const halls = await booking.find({
+      Status: { $in: ["approved", "pending"] },
+    });
     res.status(200).json(halls);
   } catch (err) {
     res.status(400).json({
