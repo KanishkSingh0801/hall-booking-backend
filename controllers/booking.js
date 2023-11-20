@@ -87,11 +87,12 @@ export const updateBooking = async (req, res) => {
   try {
     const halls = await booking
       .find({
-        Booking_ID: req.body.Booking_ID,
+        _id: req.body._id,
       })
       .updateOne({
         Status: req.body.Status,
       });
+
     res.status(200).json(halls);
   } catch (err) {
     res.status(400).json({
