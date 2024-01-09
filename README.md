@@ -5,5 +5,5 @@ I did some little contributions in the backend of the Campus Hall Booking System
 @SreevarshanM
 
 Major Contributors involves :
-* [SreevarshanM](https://github.com/SreevarshanM)
-* [shazzsamed](https://github.com/shazzsamed)
+* [@SreevarshanM](https://github.com/SreevarshanM)
+* [@shazzsamed](https://github.com/shazzsamed)
